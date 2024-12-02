@@ -11,6 +11,8 @@ import fi.viware.aoc2024.day1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // Bottom Navigation View template used
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
