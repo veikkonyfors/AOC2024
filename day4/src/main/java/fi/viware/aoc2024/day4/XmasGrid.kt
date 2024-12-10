@@ -8,6 +8,33 @@ class XmasGrid(val xmasGridLines: List<String>) {
 
     val xmasString = "XMAS"
 
+    // Puzz2
+
+    fun countCrossSam(): Int{
+
+        var count = 0
+
+        xmasGridArray.forEachIndexed loopRows@ { ir, s ->
+            if (ir in listOf(0,xmasGridArray.size-1)) return@loopRows
+            xmasGridArray[ir].forEachIndexed loopColumns@ { ic, c ->
+                if (ic in listOf(0,xmasGridArray.size-1)) return@loopColumns
+                if (isCrossSam(ir, ic))
+                    count += 1
+            }
+        }
+        return count
+    }
+
+    fun isCrossSam(row: Int, col: Int): Boolean{
+        var s = xmasGridArray[row-1][col-1].toString()+xmasGridArray[row][col]+xmasGridArray[row+1][col+1]
+        if (s !in listOf( "SAM", "MAS" )) return false
+        s = xmasGridArray[row-1][col+1].toString()+xmasGridArray[row][col]+xmasGridArray[row+1][col-1]
+        if (s !in listOf( "SAM", "MAS" )) return false
+        return true
+    }
+
+
+    // Puzz1 elow
     fun getRow(rownum: Int): Row{
         return Row(xmasGridArray[rownum])
     }

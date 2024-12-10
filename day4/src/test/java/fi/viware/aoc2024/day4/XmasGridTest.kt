@@ -17,6 +17,41 @@ class XmasGridTest {
     }
 
     @Test
+    fun puzz2Test(){
+
+        var r: Row
+        var s: String
+        var i: Int
+        var b: Boolean
+
+        var day4 = Day4("src/main/res/input_test")
+        var xmasGrid = XmasGrid(day4.xmasGridLines)
+
+        b = xmasGrid.isCrossSam(1,2)
+        println("$b\n")
+        assertEquals(true,b)
+
+        b = xmasGrid.isCrossSam(2,7)
+        println("$b\n")
+        assertEquals(true,b)
+
+        b = xmasGrid.isCrossSam(1,1)
+        println("$b\n")
+        assertEquals(false,b)
+
+        i = xmasGrid.countCrossSam()
+        println("$i")
+        assertEquals(9,i)
+
+        day4 = Day4("src/main/res/input")
+        xmasGrid = XmasGrid(day4.xmasGridLines)
+        i = xmasGrid.countCrossSam()
+        println("$i")
+        assertEquals(1948,i)
+
+    }
+
+    @Test
     fun puzz1Test(){
 
         var r: Row
