@@ -5,7 +5,15 @@ fun main(){
     var s = day4.xmasGrid.countXmas()
     println("$s")
 
+    s = day4.xmasGrid.countCrossSam()
+    println("$s")
+
     day4 = Day4("day4/src/main/res/input")
     s = day4.xmasGrid.countXmas()
     println("$s")
+
+    s = day4.xmasGrid.countCrossSam()
+    println("$s")
+
+
 }
