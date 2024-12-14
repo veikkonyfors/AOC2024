@@ -29,7 +29,11 @@ class Area(var inputLines: MutableList<String>) {
             row.forEachIndexed { ic, column ->
                 addObstacle(ir, ic)
                 walk()
-                if (inLoop) sum += 1
+                if (inLoop) {
+                    sum += 1
+                    val s = area.map { it.concatToString() }.joinToString(separator = "\n") { it }
+                    //println("$s, $ir, $ic\n")
+                }
             }
         }
         return sum
@@ -40,7 +44,7 @@ class Area(var inputLines: MutableList<String>) {
         return newArea
     }
     fun walk(){
-        while (! isOut()){
+        while (! onEdge()){
             if (inLoop) break
             when(direction){
                 "^" -> walkUp()
@@ -165,8 +169,8 @@ class Area(var inputLines: MutableList<String>) {
         return area[r][c].toString()
     }
 
-    fun isOut(): Boolean{
-        return currentRow !in (0..<rows - 1) || currentColumn !in (0..<columns - 1)
+    fun onEdge(): Boolean{
+        return currentRow !in (1..<rows - 1) || currentColumn !in (1..<columns - 1)
     }
     override fun toString(): String {
         val s = area.map { it.concatToString() }.joinToString(separator = "\n") { it }

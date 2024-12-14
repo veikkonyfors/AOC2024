@@ -72,7 +72,7 @@ class Day6Test(){
         area = Day6("src/main/res/input").area
         i = area.countLoopingExtraObstacles()
         println("$i")
-        assertEquals(6,i)
+        assertEquals(1602,i)
 
     }
 
@@ -106,7 +106,7 @@ class Day6Test(){
 
         area.walkDown()
         s = area.toString()
-        //println("$s\n")
+        println("$s\n")
         assertEquals("....#.....\n....67890#\n....5...1.\n..#.4...2.\n....3..#3.\n....2...4.\n.#..1.....\n........#.\n#.........\n......#...",s)
 
         area.walkLeft()

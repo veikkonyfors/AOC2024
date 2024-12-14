@@ -22,10 +22,6 @@ class Day6(val inputFileName: String) {
 
 
     fun solvePuzz2(): Int{
-        var sum = 0
-
-
-
-        return sum
+        return area.countLoopingExtraObstacles()
     }
 }
