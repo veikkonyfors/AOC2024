@@ -27,6 +27,7 @@ class Equation(val calcLine: String) {
             }
             //println("$res, $operands, $operpermutation")
             if (res == result) return true
+            if (res > result) return@forEach
         }
         return false
     }
