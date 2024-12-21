@@ -25,7 +25,7 @@ class Day7(val inputFileName: String) {
     }
 
 
-    fun solvePuzz2(): Int{
-        return 0
+    fun solvePuzz2(): Long{
+        return solvePuzz1()
     }
 }

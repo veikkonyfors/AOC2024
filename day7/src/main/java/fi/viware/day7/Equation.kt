@@ -2,9 +2,11 @@ package fi.viware.day7
 
 class Equation(val calcLine: String) {
     var result: Long
-    val operands: List<Int>
-    val operatorPermutations: List<String>
+    var operands: List<Int>
+    var operatorPermutations: List<String>
+    val operatorPermutations2: List<String>
     val allowedOperators: List<String>
+    val allowedOperators2: List<String>
 
     init {
         val re = """(\d+): ([\d\s]+)""".toRegex()
@@ -12,20 +14,22 @@ class Equation(val calcLine: String) {
         result = matchResult!!.groupValues[1].toLong()
         operands = matchResult!!.groupValues[2].split(" ").map { it.toInt() }
         allowedOperators = listOf("+", "*")
+        allowedOperators2 = listOf("+", "*","|")
         operatorPermutations = generatePermutations(operands.size - 1, allowedOperators )
+        operatorPermutations2 = generatePermutations(operands.size - 1, allowedOperators2 )
     }
 
     fun verifyEquation(): Boolean{
-        operatorPermutations.forEach { operpermutation ->
+        operatorPermutations2.forEach { operpermutation ->
             var res = operands[0].toLong()
             operands.forEachIndexed { io, o ->
                 if (io == 0) return@forEachIndexed
                 when(operpermutation[io - 1]){
                     '+' -> res += o
+                    '|' -> res = res*Math.pow(10.0, o.toString().length.toDouble()).toInt()+o
                     else -> res *= o
                 }
             }
-            //println("$res, $operands, $operpermutation")
             if (res == result) return true
             if (res > result) return@forEach
         }
@@ -46,7 +50,6 @@ class Equation(val calcLine: String) {
         }
         return extendedPermutations
     }
-
 
     override fun toString(): String {
         return "$result"+": " +operands.joinToString(separator = " ") { it.toString() } + "; " + operatorPermutations.joinToString(separator = " "){ it }
