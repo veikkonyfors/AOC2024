@@ -21,7 +21,7 @@ class Day8(val inputFileName: String) {
     fun solvePuzz1(): Int{
         var totalAntinodeList = mutableListOf<Pair<Int, Int>>()
         antennaMap.frequencies.forEach {
-            totalAntinodeList += antennaMap.calculateAntinodeLocationsForaFrequency(it)
+            totalAntinodeList += antennaMap.findAntinodeLocationsForaFrequency(it)
         }
         var antinodeCount = totalAntinodeList.toSet().size
         return antinodeCount
@@ -29,6 +29,11 @@ class Day8(val inputFileName: String) {
 
 
     fun solvePuzz2(): Int{
-        return 0
+        var totalAntinodeList = mutableListOf<Pair<Int, Int>>()
+        antennaMap.frequencies.forEach {
+            totalAntinodeList += antennaMap.findInlineAntinodeLocationsForaFrequency(it)
+        }
+        var antinodeCount = totalAntinodeList.toSet().size
+        return antinodeCount
     }
 }

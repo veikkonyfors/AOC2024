@@ -7,8 +7,39 @@ class Map( val mapLines:List<String>) {
     val a = antennaMap.map { it.concatToString() }
     val b = a.joinToString { it }
 
+    fun findInlineAntinodeLocationsForaFrequency(frequency: Char): List<Pair<Int, Int>> {
+        val antennaLocationList = getAntennaLocationsByFrequency(frequency)
+        var inlineAntinodeList = mutableListOf<Pair<Int, Int>>()
 
-    fun calculateAntinodeLocationsForaFrequency(frequency: Char): List<Pair<Int, Int>>{
+        antennaLocationList.forEachIndexed { index, pair ->
+            inlineAntinodeList.add(pair)
+            antennaLocationList.forEachIndexed inner@{ index2, pair2 ->
+                if (index2 <= index) return@inner
+                var rightDownOut = false
+                var leftUpOut = false
+                var round = 1
+                while (!(rightDownOut && leftUpOut)) {
+                    val dy = round*(pair.first - pair2.first)
+                    val dx = round*(pair.second - pair2.second)
+                    if (pair.first + dy in 0..<antennaMap.size &&
+                        pair.second + dx in 0..<antennaMap[0].size
+                    ) inlineAntinodeList.add(pair.first + dy to pair.second + dx)
+                    else rightDownOut = true
+                    if (pair2.first - dy in antennaMap.indices &&
+                        pair2.second - dx in 0..<antennaMap[0].size
+                    ) inlineAntinodeList.add(pair2.first - dy to pair2.second - dx)
+                    else leftUpOut = true
+
+                    round += 1
+                }
+            }
+
+        }
+
+        return  inlineAntinodeList
+    }
+
+    fun findAntinodeLocationsForaFrequency(frequency: Char): List<Pair<Int, Int>>{
         val antennaLocationList = getAntennaLocationsByFrequency(frequency)
         var antinodeList = mutableListOf<Pair<Int, Int>>()
         antennaLocationList.forEachIndexed { index, pair ->
