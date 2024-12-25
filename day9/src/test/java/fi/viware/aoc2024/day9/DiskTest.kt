@@ -18,14 +18,18 @@ class DiskTest(){
         println("$s")
         assertEquals("[0, 0, 9, 9, 8, 1, 1, 1, 8, 8, 8, 2, 7, 7, 7, 3, 3, 3, 6, 4, 4, 6, 5, 5, 5, 5, 6, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]", s)
 
-        var l = day.disk.countCheckSum()
+        var l = day.disk.countCheckSum(day.disk.blocks)
         println("$l")
         assertEquals(1928,l)
 
         day = Day9("src/main/res/input")
         day.disk.deFrag()
-        l = day.disk.countCheckSum()
+        l = day.disk.countCheckSum(day.disk.blocks)
         println("$l")
-        assertEquals(0,l)
+        assertEquals(6216544403458,l)
     }
+
+    /*
+    24.12.2024: 6216544403458 ok
+     */
 }

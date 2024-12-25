@@ -20,13 +20,15 @@ class Day9(inputFileName: String) {
 
     fun solvePuzz1(): Long{
         disk.deFrag()
-        return disk.countCheckSum()
+        return disk.countCheckSum(disk.blocks)
     }
 
 
     fun solvePuzz2(): Long{
-
-        return 0
+        val fileDefragmenter = FileDefragmenter(disk.blocks)
+        fileDefragmenter.defrag()
+        val l = disk.countCheckSum(fileDefragmenter.defragmentedBlocks )
+        return l
     }
 
 }

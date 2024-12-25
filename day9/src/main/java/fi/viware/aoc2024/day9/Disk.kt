@@ -15,7 +15,7 @@ class Disk(val fragmentLine: String) {
         }
     }
 
-    fun countCheckSum(): Long{
+    fun countCheckSum(blocks: List<Int>): Long{
         var checkSum = 0L
         checkSum = blocks.mapIndexed { index, i -> if (i != -1) index * i else 0 }.sumOf { it.toLong() }
         return  checkSum
