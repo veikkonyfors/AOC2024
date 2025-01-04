@@ -23,9 +23,8 @@ class Day10(inputFileName: String) {
     }
 
 
-    fun solvePuzz2(): Long{
-
-        return 0
+    fun solvePuzz2(): Int{
+        return topoMap.countRatings()
     }
 
 }

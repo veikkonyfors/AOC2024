@@ -45,4 +45,18 @@ class Day10Test(){
         assertEquals(36, i)
 
     }
+
+    @Test
+    fun puzz2Tests(){
+        var day = Day10("src/main/res/input_test")
+        var i = day.topoMap.countRatings()
+        println("$i")
+        assertEquals(81, i)
+
+        day = Day10("src/main/res/input")
+        i = day.topoMap.countRatings()
+        println("$i")
+        assertEquals(81, i)
+    }
+
 }
