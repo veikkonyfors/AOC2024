@@ -56,7 +56,7 @@ class Day10Test(){
         day = Day10("src/main/res/input")
         i = day.topoMap.countRatings()
         println("$i")
-        assertEquals(81, i)
+        assertEquals(1436, i)
     }
 
 }
