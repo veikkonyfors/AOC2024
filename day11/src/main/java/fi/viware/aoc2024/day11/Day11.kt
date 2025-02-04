@@ -26,8 +26,11 @@ class Day11(inputFileName: String) {
     }
 
 
-    fun solvePuzz2(): Int{
-        return stones.hashCode()
+    fun solvePuzz2(blinks: Int): Long{
+        repeat(blinks){
+            stones.blinkMapped()
+        }
+        return stones.stonesMap.values.sum()
     }
 
 }
