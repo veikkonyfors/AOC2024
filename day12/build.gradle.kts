@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "fi.viware.aoc2024.day12"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "fi.viware.aoc2024.day12"
