@@ -24,7 +24,7 @@ class Day12(inputFileName: String) {
 
 
     fun solvePuzz2(): Int{
-        return garden.hashCode()
+        return garden.totalDiscountedCost()
     }
 
 }
